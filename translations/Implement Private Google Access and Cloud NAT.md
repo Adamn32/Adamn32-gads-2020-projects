@@ -1,3 +1,4 @@
+# Create VPC
 gcloud compute networks create privatenet --project=qwiklabs-gcp-02-a19dc001c4ab --subnet-mode=custom --bgp-routing-mode=regional
 
 gcloud compute networks subnets create privatenet-us --project=qwiklabs-gcp-02-a19dc001c4ab --range=10.130.0.0/20 --network=privatenet --region=us-central1

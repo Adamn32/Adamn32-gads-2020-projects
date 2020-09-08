@@ -1,5 +1,7 @@
+# Create VPC mynetwork
 gcloud compute networks create mynetwork --project=qwiklabs-gcp-02-b2d9fe0a2f66 --subnet-mode=auto --bgp-routing-mode=regional
 
+# Setup Firewall - connections from any  source to any  instance on the network. 
 gcloud compute firewall-rules create mynetwork-allow-icmp --project=qwiklabs-gcp-02-b2d9fe0a2f66 --network=projects/qwiklabs-gcp-02-b2d9fe0a2f66/global/networks/mynetwork --description=Allows\ ICMP\ connections\ from\ any\ source\ to\ any\ instance\ on\ the\ network. --direction=INGRESS --priority=65534 --source-ranges=0.0.0.0/0 --action=ALLOW --rules=icmp
 
 gcloud compute firewall-rules create mynetwork-allow-internal --project=qwiklabs-gcp-02-b2d9fe0a2f66 --network=projects/qwiklabs-gcp-02-b2d9fe0a2f66/global/networks/mynetwork --description=Allows\ connections\ from\ any\ source\ in\ the\ network\ IP\ range\ to\ any\ instance\ on\ the\ network\ using\ all\ protocols. --direction=INGRESS --priority=65534 --source-ranges=10.128.0.0/9 --action=ALLOW --rules=all
